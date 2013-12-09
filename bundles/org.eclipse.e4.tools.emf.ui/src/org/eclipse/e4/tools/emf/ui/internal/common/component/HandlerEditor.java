@@ -229,6 +229,8 @@ public class HandlerEditor extends AbstractComponentEditor {
 
 		createInstanceInspection(folder);
 
+		createContributedEditorTabs(folder, context, getMaster(), MHandler.class);
+
 		folder.setSelection(0);
 
 		return folder;
