@@ -17,23 +17,28 @@ import org.eclipse.core.databinding.observable.list.IObservableList;
 import org.eclipse.core.databinding.observable.value.WritableValue;
 import org.eclipse.e4.core.di.annotations.Optional;
 import org.eclipse.e4.core.services.translation.TranslationService;
+import org.eclipse.e4.tools.emf.ui.common.AbstractElementEditorContribution;
 import org.eclipse.e4.tools.emf.ui.common.Util;
 import org.eclipse.e4.tools.emf.ui.internal.Messages;
 import org.eclipse.e4.tools.emf.ui.internal.common.ModelEditor;
 import org.eclipse.e4.tools.emf.ui.internal.common.component.ControlFactory;
 import org.eclipse.e4.tools.emf.ui.internal.common.properties.ProjectOSGiTranslationProvider;
+import org.eclipse.e4.tools.emf.ui.internal.editor.extension.ElementEditorExtension;
 import org.eclipse.e4.tools.services.IClipboardService.Handler;
 import org.eclipse.e4.tools.services.IResourcePool;
 import org.eclipse.e4.tools.services.Translation;
 import org.eclipse.e4.tools.services.impl.ResourceBundleTranslationProvider;
 import org.eclipse.e4.ui.model.application.MApplicationElement;
 import org.eclipse.e4.ui.model.application.ui.MUILabel;
+import org.eclipse.emf.databinding.EMFDataBindingContext;
 import org.eclipse.emf.databinding.FeaturePath;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.CTabFolder;
+import org.eclipse.swt.custom.CTabItem;
 import org.eclipse.swt.custom.ScrolledComposite;
 import org.eclipse.swt.events.ControlAdapter;
 import org.eclipse.swt.events.ControlEvent;
@@ -220,5 +225,20 @@ public abstract class AbstractComponentEditor {
 		contentContainer.setLayout(gl);
 
 		return contentContainer;
+	}
+
+	protected void createContributedEditorTabs(CTabFolder folder, EMFDataBindingContext context, WritableValue master, Class<?> clazz) {
+		List<AbstractElementEditorContribution> contributionList = ElementEditorExtension.getContributions(clazz);
+
+		for (AbstractElementEditorContribution eec : contributionList) {
+			CTabItem item = new CTabItem(folder, SWT.BORDER);
+			item.setText(eec.getTabLabel());
+
+			Composite parent = createScrollableContainer(folder);
+			item.setControl(parent.getParent());
+
+			eec.createContributedEditorTab(parent, context, master, getEditingDomain());
+		}
+
 	}
 }

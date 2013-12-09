@@ -131,6 +131,7 @@ public class PartEditor extends AbstractComponentEditor {
 			} else {
 				composite = createForm(parent, context, getMaster(), false);
 			}
+
 		}
 
 		if (getEditor().isModelFragment()) {
@@ -320,6 +321,8 @@ public class PartEditor extends AbstractComponentEditor {
 			createInstanceInspection(folder);
 			createUITreeInspection(folder);
 		}
+
+		createContributedEditorTabs(folder, context, getMaster(), MPart.class);
 
 		folder.setSelection(0);
 
