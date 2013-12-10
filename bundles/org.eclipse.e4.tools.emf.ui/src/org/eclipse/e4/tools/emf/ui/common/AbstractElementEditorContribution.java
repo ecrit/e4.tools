@@ -11,6 +11,7 @@
 package org.eclipse.e4.tools.emf.ui.common;
 
 import org.eclipse.core.databinding.observable.value.WritableValue;
+import org.eclipse.core.resources.IProject;
 import org.eclipse.e4.ui.model.application.ui.MUIElement;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
 import org.eclipse.emf.databinding.EMFDataBindingContext;
@@ -51,7 +52,8 @@ public abstract class AbstractElementEditorContribution {
 	 *            the data-binding context of the enclosing editor
 	 * @param master
 	 * @param editingDomain
+	 * @param project
 	 */
-	public abstract void createContributedEditorTab(Composite parent, EMFDataBindingContext context, WritableValue master, EditingDomain editingDomain);
+	public abstract void createContributedEditorTab(Composite parent, EMFDataBindingContext context, WritableValue master, EditingDomain editingDomain, IProject project);
 
 }
