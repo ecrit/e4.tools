@@ -15,6 +15,7 @@ import java.util.List;
 import javax.inject.Inject;
 import org.eclipse.core.databinding.observable.list.IObservableList;
 import org.eclipse.core.databinding.observable.value.WritableValue;
+import org.eclipse.core.resources.IProject;
 import org.eclipse.e4.core.di.annotations.Optional;
 import org.eclipse.e4.core.services.translation.TranslationService;
 import org.eclipse.e4.tools.emf.ui.common.AbstractElementEditorContribution;
@@ -69,6 +70,10 @@ public abstract class AbstractComponentEditor {
 	private ModelEditor editor;
 	@Inject
 	protected IResourcePool resourcePool;
+
+	@Inject
+	@Optional
+	protected IProject project;
 
 	@Inject
 	@Translation
@@ -237,7 +242,7 @@ public abstract class AbstractComponentEditor {
 			Composite parent = createScrollableContainer(folder);
 			item.setControl(parent.getParent());
 
-			eec.createContributedEditorTab(parent, context, master, getEditingDomain());
+			eec.createContributedEditorTab(parent, context, master, getEditingDomain(), project);
 		}
 
 	}
