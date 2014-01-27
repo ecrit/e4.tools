@@ -346,7 +346,7 @@ public class PerspectiveStackEditor extends AbstractComponentEditor {
 	}
 
 	protected void handleImportPerspective() {
-		ModelImportWizard wizard = new ModelImportWizard(MPerspective.class, this);
+		ModelImportWizard wizard = new ModelImportWizard(MPerspective.class, this, resourcePool);
 		WizardDialog wizardDialog = new WizardDialog(shell, wizard);
 		if (wizardDialog.open() == Window.OK) {
 			MPerspective[] elements = (MPerspective[]) wizard.getElements(MPerspective.class);

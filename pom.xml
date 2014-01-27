@@ -1,86 +1,92 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!--
-Copyright (c) 2012 Eclipse Foundation.
-All rights reserved. This program and the accompanying materials
-are made available under the terms of the Eclipse Distribution License v1.0
-which accompanies this distribution, and is available at
-http://www.eclipse.org/org/documents/edl-v10.php
-
-Contributors:
- Igor Fedorenko - initial implementation
- Lars Vogel - Adjustments for e4 tools 
+  Copyright (c) 2012 Eclipse Foundation.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Distribution License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/org/documents/edl-v10.php
+ 
+  Contributors:
+     Igor Fedorenko - initial implementation
+     Lars Vogel - Adjustments for e4 tools 
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-<modelVersion>4.0.0</modelVersion>
-<parent>
-  <groupId>org.eclipse.e4.releng</groupId>
-  <artifactId>eclipse-parent</artifactId>
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.eclipse.e4.releng</groupId>
+    <artifactId>eclipse-parent</artifactId>
+    <version>0.15.0-SNAPSHOT</version>
+  </parent>
+
+  <groupId>org.eclipse.e4.tools</groupId>
+  <artifactId>e4-tools-aggregator</artifactId>
   <version>0.15.0-SNAPSHOT</version>
-</parent>
-<groupId>org.eclipse.e4.tools</groupId>
-<artifactId>e4-tools-aggregator</artifactId>
-<version>0.15.0-SNAPSHOT</version>
-<packaging>pom</packaging>
-<properties>
-  <tycho.scmUrl>scm:git:http://git.eclipse.org/gitroot/e4/org.eclipse.e4.tools</tycho.scmUrl>
-  <tycho.version>0.19.0</tycho.version>
-</properties>
-<repositories>
-  <repository>
-    <releases>
-      <enabled>true</enabled>
-    </releases>
-    <snapshots>
-      <enabled>true</enabled>
-    </snapshots>
-    <id>eclipse-hosted</id>
-    <url>https://repo.eclipse.org/content/repositories/eclipse/</url>
-  </repository>
-</repositories>
-<modules>
-  <module>./bundles/org.eclipse.e4.tools</module>
-  <module>./bundles/org.eclipse.e4.tools.services</module>
-  <module>./bundles/org.eclipse.e4.tools.compat</module>
-  <module>./bundles/org.eclipse.e4.tools.emf.editor</module>
-  <module>./bundles/org.eclipse.e4.tools.emf.liveeditor</module>
-  <module>./bundles/org.eclipse.e4.tools.emf.editor3x</module>
-  <module>./bundles/org.eclipse.e4.tools.emf.ui</module>
-  <module>./bundles/org.eclipse.e4.tools.emf.ui.script.js</module>
-  <module>./bundles/org.eclipse.e4.tools.jdt.templates</module>
-  <module>./bundles/org.eclipse.e4.tools.css.editor.ui</module>
-  <module>./bundles/org.eclipse.e4.tools.css.editor</module>
-  <module>./bundles/org.eclipse.e4.tools.orion.css.editor</module>
-  <module>./bundles/org.eclipse.e4.tools.orion.editor</module>
-  <module>./bundles/org.eclipse.e4.tools.orion.editor.samples</module>
-  <module>./bundles/org.eclipse.e4.tools.css.spy</module>
-  <module>./bundles/org.eclipse.e4.tools.event.spy</module>
-  <module>./features/org.eclipse.e4.core.tools.feature</module>
-  <module>./features/org.eclipse.e4.tools.css.editor.feature</module>
-  <module>./features/org.eclipse.e4.tools.orion.css.editor.feature</module>
-  <module>./features/org.eclipse.e4.tools.css.spy.feature</module>
-  <module>./features/org.eclipse.e4.tools.e3x.bridge.feature</module>
-  <module>./features/org.eclipse.e4.tools.event.spy.feature</module>
-  <module>./build/org.eclipse.e4.core.tools.update/</module>
-</modules>
-<build>
-  <plugins>
-    <plugin>
-      <groupId>org.eclipse.tycho</groupId>
-      <artifactId>tycho-packaging-plugin</artifactId>
-      <version>${tycho.version}</version>
-      <configuration>
-        <sourceReferences>
-          <generate>true</generate>
-        </sourceReferences>
-      </configuration>
-      <dependencies>
-        <dependency>
-          <groupId>org.eclipse.tycho.extras</groupId>
-          <artifactId>tycho-sourceref-jgit</artifactId>
-          <version>${tycho-extras.version}</version>
-        </dependency>
-      </dependencies>
-    </plugin>
-  </plugins>
-</build>
+  <packaging>pom</packaging>
+
+	<properties>
+		<tycho.scmUrl>scm:git:http://git.eclipse.org/gitroot/e4/org.eclipse.e4.tools</tycho.scmUrl>
+	</properties>
+
+ <repositories>
+    <repository>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+      <id>eclipse-hosted</id>
+      <url>https://repo.eclipse.org/content/repositories/eclipse/</url>
+    </repository>
+  </repositories>
+
+   <modules>
+    <module>./bundles/org.eclipse.e4.tools</module>
+    <module>./bundles/org.eclipse.e4.tools.services</module>
+    <module>./bundles/org.eclipse.e4.tools.compat</module>
+    <module>./bundles/org.eclipse.e4.tools.emf.editor</module>
+    <module>./bundles/org.eclipse.e4.tools.emf.liveeditor</module>
+    <module>./bundles/org.eclipse.e4.tools.emf.editor3x</module>
+    <module>./bundles/org.eclipse.e4.tools.emf.ui</module> 
+    <module>./bundles/org.eclipse.e4.tools.emf.ui.script.js</module>
+    <module>./bundles/org.eclipse.e4.tools.jdt.templates</module>  
+    <module>./bundles/org.eclipse.e4.tools.css.editor.ui</module>
+    <module>./bundles/org.eclipse.e4.tools.css.editor</module>
+    <module>./bundles/org.eclipse.e4.tools.orion.css.editor</module>
+    <module>./bundles/org.eclipse.e4.tools.orion.editor</module>
+    <module>./bundles/org.eclipse.e4.tools.orion.editor.samples</module>
+    <module>./bundles/org.eclipse.e4.tools.css.spy</module>
+    <module>./bundles/org.eclipse.e4.tools.event.spy</module>
+    <module>./features/org.eclipse.e4.core.tools.feature</module>
+    <module>./features/org.eclipse.e4.tools.css.editor.feature</module>
+    <module>./features/org.eclipse.e4.tools.orion.css.editor.feature</module>
+    <module>./features/org.eclipse.e4.tools.css.spy.feature</module>
+    <module>./features/org.eclipse.e4.tools.e3x.bridge.feature</module>
+    <module>./features/org.eclipse.e4.tools.event.spy.feature</module>
+    <module>./build/org.eclipse.e4.core.tools.update/</module>
+  </modules>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-packaging-plugin</artifactId>
+				<version>${tycho.version}</version>
+				<configuration>
+					<sourceReferences>
+						<generate>true</generate>
+					</sourceReferences>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>org.eclipse.tycho.extras</groupId>
+						<artifactId>tycho-sourceref-jgit</artifactId>
+						<version>${tycho-extras.version}</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+		</plugins>
+	</build>
+
 </project>
